@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-//import {Routes, Route, useNavigate} from 'react-router-dom';
+import {Routes, Route, useNavigate} from 'react-router-dom';
 // import LoginPage from './LoginPage';
 // import SignupPage from './SignupPage';
 
 const LandingPage = () => {
     //useState();
-   // const navigate = useNavigate();
+   const navigate = useNavigate();
 
-    //const navigateToLogin = () => { navigate(LoginPage) };
-    //const navigateToSignup = () => { navigate(SignupPage) };
+    const navigateToLogin = () => { navigate('login') };
+    const navigateToSignup = () => { navigate('signup') };
 
     // const LandingPage = 
     //     <div className="landingPage">
@@ -24,8 +24,8 @@ const LandingPage = () => {
             <h1>Welcome to JavaScrivia</h1>
             <h2>Please sign up or log in to continue</h2>
             <div className="buttonsArea">
-                <button className="loginButton">Log In</button>
-                <button className="signupButton">Sign Up</button>
+                <button className="loginButton" onClick={navigateToLogin}>Log In</button>
+                <button className="signupButton" onClick={navigateToSignup}>Sign Up</button>
             </div>
         </div>
         );
