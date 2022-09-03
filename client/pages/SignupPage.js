@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 
 export default function SignupPage () {
-    // const signupPage = 
-  
+    
+    const navigate = useNavigate();
+    
+    const navigateToTrivia = () => { navigate('trivia') };     
 
     return (
         <div className="loginPage">
@@ -12,7 +14,7 @@ export default function SignupPage () {
             <input type="text" placeholder="username"></input>
             <input type="text" placeholder="password"></input>
         </form>
-        <button className="loginButton">Signup</button>
+        <button className="loginButton" onClick={navigateToTrivia}>Signup</button>
     </div> 
     );
 }
