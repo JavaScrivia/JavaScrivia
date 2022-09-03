@@ -1,15 +1,37 @@
 import React from 'react';
 import { render } from 'react-dom';
-// import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import ReactDOM from "react-dom/client";
 import App from './App';
+//import the other pages/components
+import LandingPage from './pages/LandingPage';
+import SignupPage from './pages/SignupPage';
+import LoginPage from './pages/LoginPage';
 
-render(
-    <React.StrictMode>
-        {/* <BrowserRouter> */}
-            <App />
-        {/* </BrowserRouter> */}
-    </React.StrictMode>,
-    document.getElementById('root'),
+
+const root = ReactDOM.createRoot(
+    document.getElementById("root")
   );
 
-
+root.render(
+    // <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+                    <Route path="/landing" element={<LandingPage />} />
+                    <Route path="/signup" element={<SignupPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route 
+                        path="*" 
+                        element={
+                            <main>
+                                <p>There's no page at this URL!</p>
+                            </main>
+                        }
+                    />
+                {/* </Route> */}
+            </Routes>
+        </BrowserRouter>,
+    // </React.StrictMode>,
+    document.getElementById('root'),
+  );

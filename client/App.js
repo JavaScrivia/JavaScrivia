@@ -1,11 +1,17 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+// import { Routes, Route } from 'react-router-dom';
+// import { Component } from 'react';
+import LandingPage from './pages/LandingPage.js';
 
 
-function App() {
-  return (
-    <div>YOU MADE IT TO THE FRONT END</div>
-  )
+function App () {
+
+    return (
+      <div>
+        <LandingPage />
+      </div>
+    )
+
 }
 
-export default App
+export default App;
