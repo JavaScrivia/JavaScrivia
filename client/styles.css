@@ -1,0 +1,34 @@
+.landingPage {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+}
+
+.buttonsArea {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
+}
+
+.loginPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+}
+
+.formsArea {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+}
+
+.signupPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+}
