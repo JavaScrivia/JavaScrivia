@@ -23,6 +23,23 @@ userController.createUser = (req, res, next) => { //post part 2
         });
     };
 
+    userController.verifyUser = (req, res, next) => {
+      // write code here
+      const { username, password } = req.body;
+      User.findOne({ username }, (err, foundUser) => {
+        if (err || !foundUser) {
+          return res.redirect('/signup');
+        } else {
+          foundUser.comparePassword(password, function (err, isMatch) {
+            // console.log(err, password, isMatch);
+            if (err || !isMatch) return res.redirect('/signup');
+            res.locals.id = foundUser._id;
+            return next();
+          });
+        }
+      });
+    };
+
   userController.checkSign = (req, res, next) => { //post part 1
     const values = [req.body.username, req.body.password];
     const query = `
