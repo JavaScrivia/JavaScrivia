@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import LeaderBoard from './LeaderBoard';
 
 const TriviaPage = () => {
     
@@ -48,7 +49,7 @@ const TriviaPage = () => {
 
     return (
         <div className="wrapper">
-            <h1>It's Time To Get Javascrivvyyyyyyy</h1>
+            <h1>It's Time To Get JavaSavyyyyy</h1>
             <div className="mainContainer">
                 <div className="triviaContainer">
                     <div className="codeSnippet">
@@ -69,10 +70,12 @@ const TriviaPage = () => {
                 </div>
                 <div className="leaderboardContainer">
                     <p>High Scores:</p>
+                    <LeaderBoard update={state}/>
                 </div>
             </div>
             <button onClick={grabTrivia}>Next Question</button>
             <button className="signOut" onClick={logOut}>Sign Out</button>
+            
         </div>
     )
 }
