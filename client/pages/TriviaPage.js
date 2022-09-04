@@ -5,7 +5,15 @@ const TriviaPage = () => {
     
     const [state, setState] = useState({ 
         i: 0,
-        currentQuestion: ''
+        codeSnippet: '',
+        currentQuestion: '',
+        answerExplanation: '',
+        answerOptions: {
+            A: '',
+            B: '',
+            C: '',
+            D: ''
+        }
     })
     
     
@@ -16,7 +24,24 @@ const TriviaPage = () => {
     const grabTrivia = () => {
         fetch(`https://api.javascript-trivia.com/`)
             .then(res => res.json())
-        // .then(data => setState({i : state.i + 1, currentQuestion : data.questions[state.i].question}))
+            //.then(data => setState({
+            //   i: state.i + 1,
+            //   codeSnippet: data.questions[state.i].codeSnippet,
+            //currentQuestion: data.questions[state.i].question,
+            //answerExplanation: data.questions[state.i].answerExplanation,
+            //}))
+            //
+            // PROTOTYPE OF RENDERING BUTTON OPTIONS:
+            .then(data => setState({
+                i: state.i + 1,
+                codeSnippet: data.questions[state.i].codeSnippet,
+            currentQuestion: data.questions[state.i].question,
+             answerOptions: data.questions[state.i].answerOptions
+            }))
+
+
+
+
             .then(data => console.log(data.questions[state.i]));
         //console.log('this is i', state.i)
     }
@@ -26,22 +51,28 @@ const TriviaPage = () => {
             <h1>It's Time To Get Javascrivvyyyyyyy</h1>
             <div className="mainContainer">
                 <div className="triviaContainer">
+                    <div className="codeSnippet">
+                        <p> Prompt: {state.codeSnippet}</p>
+                    </div>
                     <div className="questionArea">
                         <p>Question: {state.currentQuestion}</p>
                     </div>
                     <div className="answerOptions">
-                    <button>A</button>
-                    <button>B</button>
-                    <button>C</button>
-                    <button>D</button>
+                    <button>A <span> {state.answerOptions.A} </span></button>
+                    <button>B <span> {state.answerOptions.B} </span></button>
+                    <button>C <span> {state.answerOptions.C} </span></button>
+                    <button>D <span> {state.answerOptions.D} </span></button>
                     </div>
+                    <div className="explanation">
+                        <p>Explanation of answer: {state.answerExplanation}</p>
+                    </div> 
                 </div>
                 <div className="leaderboardContainer">
                     <p>High Scores:</p>
                 </div>
             </div>
-            <button onClick={grabTrivia}>grab trivia</button>
-            <button className="signOut" onClick={logOut}>sign out</button>
+            <button onClick={grabTrivia}>Next Question</button>
+            <button className="signOut" onClick={logOut}>Sign Out</button>
         </div>
     )
 }
