@@ -5,8 +5,8 @@ const LandingPage = () => {
 
    const navigate = useNavigate();
 
-    const navigateToLogin = () => { navigate('login') };
-    const navigateToSignup = () => { navigate('signup') };
+    const navigateToLogin = () => { navigate('/login') };
+    const navigateToSignup = () => { navigate('/signup') };
 
         return (
             <div className="initialContainer">

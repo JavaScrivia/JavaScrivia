@@ -9,7 +9,7 @@ userController.createUser = (req, res, next) => { //post part 2
   const values = [req.body.username, req.body.password, 0];
     const query = `INSERT INTO user_final (username, password, score) VALUES ($1, $2, $3);`; 
         db.query(query, values)
-        .then(response=> {
+        .then(response => {
             // console.log('inside db query create user: ', response);
             // res.locals.user = response;
             return next();
@@ -23,34 +23,20 @@ userController.createUser = (req, res, next) => { //post part 2
         });
     };
 
-    userController.verifyUser = (req, res, next) => {
-      // write code here
-      const { username, password } = req.body;
-      User.findOne({ username }, (err, foundUser) => {
-        if (err || !foundUser) {
-          return res.redirect('/signup');
-        } else {
-          foundUser.comparePassword(password, function (err, isMatch) {
-            // console.log(err, password, isMatch);
-            if (err || !isMatch) return res.redirect('/signup');
-            res.locals.id = foundUser._id;
-            return next();
-          });
-        }
-      });
-    };
-
   userController.checkSign = (req, res, next) => { //post part 1
-    const values = [req.body.username, req.body.password];
+    console.log('we are in the check sign:  ', req.body.username);
+    const values = [req.body.username];
     const query = `
-      SELECT "username", "password"
+      SELECT username
       FROM user_final
-      WHERE username = $1 AND password = $2;
+      WHERE username = $1;
     `;
       db.query(query, values)
           .then((data) => {
             //console.log('username and password exists in DB', data.rows[0]);
             // console.log(data.rows[0]);
+            //if the user exists, send back false
+            // console.log(data.rows);
             if (data.rows.length) return res.status(200).send(false);
             
             return next();

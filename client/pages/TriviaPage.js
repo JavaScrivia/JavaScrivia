@@ -25,7 +25,7 @@ const TriviaPage = () => {
     
     const navigate = useNavigate();
 
-    const logOut = () => { navigate('landing') };
+    const logOut = () => { navigate('/landing') };
 
     const grabTrivia = () => {
         fetch(`https://api.javascript-trivia.com/`)
@@ -86,7 +86,7 @@ const TriviaPage = () => {
                 </div>
                 <div className="leaderboardContainer">
                     <p>High Scores:</p>
-                    <LeaderBoard update={state}/>
+                    <LeaderBoard />
                 </div>
             </div>
             <button onClick={grabTrivia}>Next Question</button>

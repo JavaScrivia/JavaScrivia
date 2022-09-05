@@ -1,21 +1,41 @@
 import React, { useState } from 'react';
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignupPage () {
+    const [ message, setMessage ] = useState('Sign up! Please be advised that your username will also be your leaderboard display name');
     
     const navigate = useNavigate();
     
     const navigateToTrivia = () => { navigate('trivia') };     
+
+    const handleSignup = () => {
+        fetch('/api',
+        {
+            method: 'POST',
+            body: JSON.stringify( { username: document.getElementById('user').value, password: document.getElementById('pass').value } ),
+            headers: { 'Content-Type' : 'application/json' },
+        })
+        .then(response => response.json())
+        .then(response => {
+            if (response) {
+                return navigateToTrivia();
+            } else {
+                return setMessage('Your username/password already exist, please try again');
+            }
+        })
+        .catch(err => console.log(err));
+    };
 
     return (
         <div className="initialContainer">
             <h1 className="landingH1">Sign Up</h1>
             <div className="signInArea">
             <form className="formsArea">
-                <input className="landingInput" type="text" placeholder="username"></input>
-                <input className="landingInput" type="text" placeholder="password"></input>
+                <input className="landingInput" id="user" type="text" placeholder="username"></input>
+                <input className="landingInput" id="pass" type="text" placeholder="password"></input>
             </form>
-            <button className="landingButton" onClick={navigateToTrivia}>enter</button>
+            <h3>{message}</h3>
+            <button className="landingButton" onClick={handleSignup}>enter</button>
             </div>
         </div>
     );
