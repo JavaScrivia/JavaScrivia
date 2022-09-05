@@ -17,6 +17,7 @@ export default function SignupPage () {
         })
         .then(response => response.json())
         .then(response => {
+            console.log('signup worked: ', response);
             if (response) {
                 return navigateToTrivia();
             } else {

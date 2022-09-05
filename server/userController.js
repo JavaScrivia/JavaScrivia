@@ -36,7 +36,7 @@ userController.createUser = (req, res, next) => { //post part 2
             //console.log('username and password exists in DB', data.rows[0]);
             // console.log(data.rows[0]);
             //if the user exists, send back false
-            // console.log(data.rows);
+            console.log(data.rows);
             if (data.rows.length) return res.status(200).send(false);
             
             return next();
