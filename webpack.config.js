@@ -16,7 +16,7 @@ module.exports = {
       //publicPath: '/bundleFolder'
     },
     proxy: {
-      '/api' :'http://localhost:3000',
+      '/api' : 'http://localhost:3000',
       '/board' : 'http://localhost:3000',
     },
     compress: false,
@@ -33,7 +33,7 @@ module.exports = {
     module: {
     rules: [
         {
-            test: /.js$/,
+            test: /.js|jsx$/,
             exclude: /node_modules/,
             use: {
                 loader: 'babel-loader',
@@ -52,7 +52,10 @@ module.exports = {
         use: ['file-loader', 'url-loader?limit=8192'],
       }
     ]
-},
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
 }
 
   

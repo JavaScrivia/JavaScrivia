@@ -17,12 +17,14 @@ app.get('/api', userController.checkLog, (req, res) => {
 });
 
 app.patch('/api', userController.updateScore, (req, res) => {
+  //patch request to update user score
   return res.status(200).send('score updated');
 });
 
 app.get('/board', userController.leaderBoard, (req, res) => {
+  //for diaplying the entire leaderboard
   return res.status(200).json(res.locals.board);
-})
+});
 
 app.get('/', (req, res) => {
   return res.status(200).send('successfully logged in!');
@@ -30,7 +32,7 @@ app.get('/', (req, res) => {
 //catch all route handler
 app.use('*', (req, res) => {
   return res.status(404).send('THIS ENDPOINT DOES NOT EXIST')
-})
+});
 
 // global error handler:
 app.use((err, req, res, next) => {

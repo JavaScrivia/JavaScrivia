@@ -1,26 +1,38 @@
 import React, { useState } from 'react';
-import {Routes, Route, useNavigate} from 'react-router-dom';
-import TriviaPage from './TriviaPage';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage () {
-    
+    const [ message, setMessage ] = useState('Please enter your username and password');
     const navigate = useNavigate();
     
-    const navigateToTrivia = () => { navigate('trivia') };      
+    const navigateToTrivia = () => { navigate('trivia') };  
 
-    // const verifyUser = () => {
-    //     const requestBody = 
-    // }
+    const handleSubmit = () => {
+        fetch(`/api?username=${document.getElementById('user1').value}&password=${document.getElementById('pass1').value}`)
+        .then(response => response.json())
+        .then(response => {
+            console.log(response);
+            if (response) {
+                return navigateToTrivia();
+            } else {
+                return setMessage('Your username/password is incorrect')
+            }
+        })
+        .catch(err => console.log(err));
+    }
+    
+        
 
     return (
         <div className="initialContainer">
             <h1 className="landingH1">Log In</h1>
             <div className="signInArea">
             <form className="formsArea">
-                <input className="landingInput" type="text" placeholder="username"></input>
-                <input className="landingInput" type="text" placeholder="password"></input>
+                <input className="landingInput" type="text" id="user1" placeholder="username"></input>
+                <input className="landingInput" type="text" id="pass1" placeholder="password"></input>
             </form>
-            <button className="landingButton" onClick={navigateToTrivia}>enter</button>
+            <h3>{message}</h3>
+            <button className="landingButton" onClick={handleSubmit}>enter</button>
             </div>
         </div>
     );
