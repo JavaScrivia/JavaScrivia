@@ -31,6 +31,8 @@ The first question will be loaded on the Trivia page when the user clicks the "N
  ## How does the leaderboard work?
 There is more functionality in our changeBoolean function that influences the score and therefore the leaderboard. When a user submits an answer attempt (triggering this changeBoolean function), a fetch PATCH request is made to our SQL database. The PATCH request uses the username property stored in state to access the score for the user who is currently logged in and increments their score in the database by 1.
 
+The Leaderboard component makes a fetch GET request to our SQL database which returns an array of user objects. These objects are displayed by looping through the array and rendering an instance of the 'Competitors' div for each object in the array. All of this functionality is wrapped inside of a useEffect which causes the Leaderboard to re-render any time a change is made to its props.score (caused by incrementation in the changeBoolean function on the Trivia page).
+
 ## What is missing?
 Our leaderboard currently does not factor incorrect answers into a user's score. Additionally, a user's progress is not stored in the database, meaning that every time a user logs in they will be set back to the first question in the array and their score will continue to increment upon answering the same question repeatedly if they just log out and log in to answer it again.
 Potential stretch features could keep track of a user's progress, starting them at the place they left off last, or divide the questions into units or categories so that a user can choose what they want to study.
