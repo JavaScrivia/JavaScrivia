@@ -78,7 +78,7 @@ const TriviaPage = props => {
         <div className="triviaContainer">
           <div className="codeSnippet">
             <p className="codesnippet">
-              {' '}
+              
               Prompt: <br />
               <br />
               {state.codeSnippet}{' '}

@@ -72,14 +72,6 @@
   font-size: 23px;
   margin: auto;
 }
-.landingButton:hover {
-   cursor : pointer;
-   background-color: #bcf5e646; 
-}
-.landingButton:active {
-   background-color: #b439c7; 
-}
-
 
 .formsArea {
   gap: 8px;
@@ -119,6 +111,7 @@
 
 .wrapper {
   display: flex;
+  background-color: #bcf5e6;
   justify-content: center;
   margin: auto;
   flex-direction: column;
@@ -134,30 +127,46 @@
   background-color: #bcf5e6;
   font-family: Arial, Helvetica, sans-serif;
   color: #2b3f3a;
-  border: 10px solid #f0c8f7;
 }
 
 .triviaContainer {
   display: flex;
   flex-direction: column;
   border: 6px solid darkcyan;
-  width: 500px;
+  width: 600px;
   height: 800px;
-  background-color: #f0c8f7;
+  background-color: #f9e4fc;
   border-radius: 8px;
-  padding: 30px;
 }
 
 .leaderboardContainer {
   display: flex;
   flex-direction: column;
   border: 1px solid red;
-  width: 500px;
+  width: 600px;
   height: 800px;
-  background-color: #f0c8f7;
+  background-color: #f9e4fc;
   border: 6px solid darkcyan;
   border-radius: 8px;
-  padding: 30px;
+}
+
+.leaderboardContainer h2 {
+  color: darkcyan;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.wrapper h2 {
+  color: darkcyan;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.currentScore {
+  color: darkcyan;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
 }
 
 .answerOptions {
@@ -171,14 +180,86 @@
   white-space: pre-wrap;
 }
 
-.nameAndButtons {
-  width: 100px;
-}
-
 h3 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
   font-size: 18px;
   color: darkcyan;
   text-align: center;
+}
+
+.wrapper h1 {
+  color: darkcyan;
+  font-family: 'Brush Script MT', cursive;
+  font-size: 80px;
+}
+
+.wrapper button {
+  width: 150px;
+  height: 50px;
+  background-color: #f2fefb;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  color: darkcyan;
+  border: 1px solid darkcyan;
+  border-radius: 5px;
+  font-size: 16px;
+  margin: auto;
+  padding: 10px;
+  gap: 10px;
+}
+
+.answerOptions button {
+  width: 250px;
+  height: 50px;
+  background-color: #f2fefb;
+  font-family: courier;
+  font-weight: lighter;
+  color: darkcyan;
+  border: 1px solid darkcyan;
+  border-radius: 5px;
+  font-size: 16px;
+  /* margin: auto; */
+  padding: 10px;
+  gap: 10px;
+  text-align: left;
+  align-items: left;
+  margin-left: 10px;
+}
+
+.explanation p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  color: darkcyan;
+  padding: 10px;
+}
+
+.codeSnippet p {
+  font-family: courier;
+  font-weight: bold;
+  color: darkcyan;
+  padding: 10px;
+}
+
+.questionArea p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: darkcyan;
+  padding: 10px;
+}
+
+.incorrectAnswer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+  color: darkcyan;
+  padding: 10px;
+}
+
+.leaderboardContainer {
+  padding: 10px;
+  /* font-color: darkcyan; */
+}
+
+.nameAndButtons button {
+  align-items: bottom;
 }

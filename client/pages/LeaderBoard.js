@@ -22,7 +22,7 @@ const LeaderBoard = (props) => {
 
   return (
     <div>
-        <h1>LEADERBOARD SCORE: {props.score}</h1>
+        <h2>LEADERBOARD SCORE: {props.score}</h2>
         {places}
     </div>
   )
