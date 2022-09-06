@@ -29,13 +29,14 @@ const TriviaPage = props => {
   };
 
   const grabTrivia = () => {
+    console.log(props);
     fetch(`https://api.javascript-trivia.com/`)
       .then(res => res.json())
 
       .then(data => {
         // console.log(JSON.stringify(data.questions[state.i].codeSnippet));
         // data.questions[state.i].codeSnippet.replaceAll('\n', '<br />');
-        console.log(data.questions[0]);
+        console.log(state.i);
         setState({
           i: state.i + 1,
           codeSnippet: data.questions[state.i].codeSnippet,
@@ -58,7 +59,7 @@ const TriviaPage = props => {
     // console.log(state.correctAnswer);
     if (e.target.innerHTML[0] === state.correctAnswer && clicked === false) {
       let temp = props.score + 1;
-      console.log(temp);
+      // console.log(temp);
       fetch('/api', {
         method: 'PATCH',
         body: JSON.stringify({
