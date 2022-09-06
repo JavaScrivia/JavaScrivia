@@ -8,15 +8,10 @@ export default function LoginPage (props) {
     
     const navigateToTrivia = () => { navigate('trivia') };  
 
-    // get request to the /api endpoint and check username & password columns in SQL table for values 
-    // corresponding to the value of the user1 & pass1 input fields
-    // /api?username=lilah&password=august
     const handleSubmit = () => {
         fetch(`/api?username=${document.getElementById('user1').value}&password=${document.getElementById('pass1').value}`)
         .then(response => response.json())
         .then(response => {
-            //props.setScore
-            console.log(response);
             if (response) {
                 fetch(`/user?username=${document.getElementById('user1').value}`)
                 .then(response => response.json())
