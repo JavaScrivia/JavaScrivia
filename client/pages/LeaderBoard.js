@@ -19,10 +19,11 @@ const LeaderBoard = (props) => {
             setPlaces(finalList);
         })
         .catch((err) => console.log(err.json()));
-    }, []);
+    }, [props.score]);
 
   return (
     <div>
+        <h1>CURRENT SCORE: {props.score}</h1>
         {places}
     </div>
   )

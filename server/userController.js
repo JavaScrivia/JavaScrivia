@@ -72,6 +72,7 @@ const userController = {};
 
 
     userController.updateScore = (req, res, next) => { //patch request
+       console.log('we are in the update score: ', req.body);
         const values = [req.body.username, req.body.score];
         const query = `
         UPDATE user_final
@@ -104,7 +105,7 @@ const userController = {};
 
 
     userController.getScore = (req, res, next) => {
-      console.log('we are inside the get score: ', req.query);
+      // console.log('we are inside the get score: ', req.query);
       const values = [req.query.username]
       const query = `
       SELECT score
