@@ -24,6 +24,7 @@ const userController = {};
         };
 
 
+
     userController.checkSign = (req, res, next) => { //post part 1
       console.log('we are in the check sign:  ', req.body.username);
       const values = [req.body.username];
@@ -44,6 +45,7 @@ const userController = {};
             })
             .catch(err => console.log(err));
         };
+
     
 
     userController.checkLog = (req, res, next) => { //get request

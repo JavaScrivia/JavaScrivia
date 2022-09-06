@@ -17,6 +17,7 @@ export default function SignupPage (props) {
         })
         .then(response => response.json())
         .then(response => {
+            console.log('signup worked: ', response);
             if (response) {
                 props.setUsername(document.getElementById('user').value);
                 return navigateToTrivia();
