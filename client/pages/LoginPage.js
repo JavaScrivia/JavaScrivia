@@ -1,18 +1,30 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function LoginPage () {
+export default function LoginPage (props) {
     const [ message, setMessage ] = useState('Please enter your username and password');
+
     const navigate = useNavigate();
     
     const navigateToTrivia = () => { navigate('trivia') };  
 
+    // get request to the /api endpoint and check username & password columns in SQL table for values 
+    // corresponding to the value of the user1 & pass1 input fields
+    // /api?username=lilah&password=august
     const handleSubmit = () => {
         fetch(`/api?username=${document.getElementById('user1').value}&password=${document.getElementById('pass1').value}`)
         .then(response => response.json())
         .then(response => {
+            //props.setScore
             console.log(response);
             if (response) {
+                fetch(`/user?username=${document.getElementById('user1').value}`)
+                .then(response => response.json())
+                .then(data => {
+                    props.setScore(data);
+                })
+                .catch(err => console.log(err));
+                props.setUsername(document.getElementById('user1').value)
                 return navigateToTrivia();
             } else {
                 return setMessage('Your username/password is incorrect')
@@ -21,8 +33,6 @@ export default function LoginPage () {
         .catch(err => console.log(err));
     }
     
-        
-
     return (
         <div className="initialContainer">
             <h1 className="landingH1">Log In</h1>

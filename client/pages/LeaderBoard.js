@@ -5,11 +5,11 @@ const LeaderBoard = (props) => {
     const [ places, setPlaces ] = useState([]);
 
     useEffect(() => {
-        console.log('useEffect triggered')
+        // console.log('useEffect triggered')
         fetch('/board')
         .then(response => response.json())
         .then(response => {
-            console.log(response.sort((a,b) => b.score - a.score))
+            response.sort((a,b) => b.score - a.score);
             const finalList = [];
             let key = 1;
             for (const element of response) {
