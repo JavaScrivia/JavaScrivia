@@ -5,7 +5,6 @@ const LeaderBoard = (props) => {
     const [ places, setPlaces ] = useState([]);
 
     useEffect(() => {
-        // console.log('useEffect triggered')
         fetch('/board')
         .then(response => response.json())
         .then(response => {

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LeaderBoard from './LeaderBoard';
 import Answer from './Answer';
 
@@ -32,11 +32,7 @@ const TriviaPage = props => {
   const grabTrivia = () => {
     fetch(`https://api.javascript-trivia.com/`)
       .then(res => res.json())
-
       .then(data => {
-        // console.log(JSON.stringify(data.questions[state.i].codeSnippet));
-        // data.questions[state.i].codeSnippet.replaceAll('\n', '<br />');
-        console.log(data.questions[0]);
         setState({
           i: state.i + 1,
           codeSnippet: data.questions[state.i].codeSnippet,
@@ -48,20 +44,13 @@ const TriviaPage = props => {
         setExplanation(false);
         setClicked(false);
       });
-    // .then(data => console.log(data.questions[state.i]));
-    // console.log(data)
   };
 
   const changeBoolean = e => {
-    // console.log(state.answerOptions.D)
-    //we can access the correct answer with state.correctAnswer
-    // console.log(e.target.innerHTML);
-    // console.log(state.correctAnswer);
     if (e.target.innerHTML[0] === state.correctAnswer && clicked === false) {
       let tempor = correct
       setCorrect(tempor + 1);
       let temp = props.score + 1;
-      console.log(temp);
       fetch('/api', {
         method: 'PATCH',
         body: JSON.stringify({
@@ -151,12 +140,4 @@ const TriviaPage = props => {
 
 export default TriviaPage;
 
-//.then(data => setState({
-//   i: state.i + 1,
-//   codeSnippet: data.questions[state.i].codeSnippet,
-//currentQuestion: data.questions[state.i].question,
-//answerExplanation: data.questions[state.i].answerExplanation,
-//}))
-//
-// .then(console.log(res))
-// PROTOTYPE OF RENDERING BUTTON OPTIONS:
+

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-// import { Component } from 'react';
 import './styles.css';
 import LandingPage from './pages/LandingPage';
 import SignupPage from './pages/SignupPage';
@@ -16,7 +15,7 @@ function App () {
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                     <Route path="/landing" element={<LandingPage />} />
-                    <Route path="/signup" element={<SignupPage username={username} setUsername={setUsername}/>} />
+                    <Route path="/signup" element={<SignupPage username={username} setUsername={setUsername} setScore={setScore}/>} />
                     <Route path="/login" element={<LoginPage username={username} setUsername={setUsername} setScore={setScore} />} />
                     <Route path="/login/trivia" element={<TriviaPage username={username} score={score} setScore={setScore}/>} />
                     <Route path="/signup/trivia" element={<TriviaPage username={username} score={score} setScore={setScore}/>} />

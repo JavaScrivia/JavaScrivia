@@ -20,6 +20,7 @@ export default function SignupPage (props) {
             console.log('signup worked: ', response);
             if (response) {
                 props.setUsername(document.getElementById('user').value);
+                props.setScore(0);
                 return navigateToTrivia();
             } else {
                 return setMessage('Your username/password already exist, please try again');
