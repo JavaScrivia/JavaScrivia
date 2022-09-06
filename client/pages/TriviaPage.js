@@ -73,7 +73,7 @@ const TriviaPage = props => {
 
   return (
     <div className="wrapper">
-      <h1>It's Time To Get JavaSavyyyyy</h1>
+      <h1 class="landingH1">It's Time To Get JavaSavyyyyy</h1>
       <div className="mainContainer">
         <div className="triviaContainer">
           <div className="codeSnippet">
@@ -122,18 +122,16 @@ const TriviaPage = props => {
             Incorrectly Answered: {incorrect}
           </div>
         </div>
-        <div>
+        <div className="nameAndButtons">
           <h2>Name: {props.username}</h2>
+          <button className="landingButton" onClick={grabTrivia}>Next Question</button>
+          <button className="landingButton" onClick={logOut}>Sign Out</button>
         </div>
         <div className="leaderboardContainer">
-          <p>High Scores:</p>
+          <h2>High Scores:</h2>
           <LeaderBoard score={props.score}/>
         </div>
       </div>
-      <button onClick={grabTrivia}>Next Question</button>
-      <button className="signOut" onClick={logOut}>
-        Sign Out
-      </button>
     </div>
   );
 };
