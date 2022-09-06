@@ -6,7 +6,8 @@ import Answer from './Answer';
 const TriviaPage = props => {
   const [ explanation, setExplanation ] = useState(false);
   const [ clicked, setClicked ] = useState(false);
-
+  const [incorrect, setIncorrect] = useState(0);
+  const [correct, setCorrect] = useState(0);
   const [state, setState] = useState({
     i: 0,
     codeSnippet: '',
@@ -57,6 +58,8 @@ const TriviaPage = props => {
     // console.log(e.target.innerHTML);
     // console.log(state.correctAnswer);
     if (e.target.innerHTML[0] === state.correctAnswer && clicked === false) {
+      let tempor = correct
+      setCorrect(tempor + 1);
       let temp = props.score + 1;
       console.log(temp);
       fetch('/api', {
@@ -70,6 +73,10 @@ const TriviaPage = props => {
       .then(res => res.json())
       .then(data => props.setScore(temp))
       .catch(err => console.log('error: ', err))
+    } else if (e.target.innerHTML[0] !== state.correctAnswer && clicked === false) {
+      let incorrectTemp = incorrect;
+      setIncorrect(incorrectTemp + 1);
+
     }
     setClicked(true);
     setExplanation(true);
@@ -120,6 +127,10 @@ const TriviaPage = props => {
                 explanation={state.answerExplanation}
               />
             )}
+          </div>
+          <div className="incorrectAnswer">
+            Correctly Answered: {correct} <br/>
+            Incorrectly Answered: {incorrect}
           </div>
         </div>
         <div>
