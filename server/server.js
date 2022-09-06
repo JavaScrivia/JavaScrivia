@@ -18,7 +18,7 @@ app.get('/api', userController.checkLog, (req, res) => {
 
 app.patch('/api', userController.updateScore, (req, res) => {
   //patch request to update user score
-  return res.status(200).send('score updated');
+  return res.status(200).json('score updated');
 });
 
 app.get('/board', userController.leaderBoard, (req, res) => {
@@ -26,9 +26,15 @@ app.get('/board', userController.leaderBoard, (req, res) => {
   return res.status(200).json(res.locals.board);
 });
 
+app.get('/user', userController.getScore, (req, res) => {
+  console.log('inside app.get for /user: ', res.locals.score)
+  return res.status(200).json(res.locals.score);
+});
+
 app.get('/', (req, res) => {
   return res.status(200).send('successfully logged in!');
 });
+
 //catch all route handler
 app.use('*', (req, res) => {
   return res.status(404).send('THIS ENDPOINT DOES NOT EXIST')

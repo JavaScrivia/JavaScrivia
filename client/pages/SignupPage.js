@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function SignupPage () {
+export default function SignupPage (props) {
     const [ message, setMessage ] = useState('Sign up! Please be advised that your username will also be your leaderboard display name');
-    
+
     const navigate = useNavigate();
     
     const navigateToTrivia = () => { navigate('trivia') };     
@@ -19,6 +19,7 @@ export default function SignupPage () {
         .then(response => {
             console.log('signup worked: ', response);
             if (response) {
+                props.setUsername(document.getElementById('user').value);
                 return navigateToTrivia();
             } else {
                 return setMessage('Your username/password already exist, please try again');
