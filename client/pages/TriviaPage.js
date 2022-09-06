@@ -4,8 +4,8 @@ import LeaderBoard from './LeaderBoard';
 import Answer from './Answer';
 
 const TriviaPage = props => {
-  const [explanation, setExplanation] = useState(false);
-  const [clicked, setClicked] = useState(false);
+  const [ explanation, setExplanation ] = useState(false);
+  const [ clicked, setClicked ] = useState(false);
 
   const [state, setState] = useState({
     i: 0,
@@ -57,7 +57,6 @@ const TriviaPage = props => {
     // console.log(e.target.innerHTML);
     // console.log(state.correctAnswer);
     if (e.target.innerHTML[0] === state.correctAnswer && clicked === false) {
-      
       let temp = props.score + 1;
       console.log(temp);
       fetch('/api', {
