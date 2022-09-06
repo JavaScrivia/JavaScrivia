@@ -72,6 +72,14 @@
   font-size: 23px;
   margin: auto;
 }
+.landingButton:hover {
+   cursor : pointer;
+   background-color: #bcf5e646; 
+}
+.landingButton:active {
+   background-color: #b439c7; 
+}
+
 
 .formsArea {
   gap: 8px;
